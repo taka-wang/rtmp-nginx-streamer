@@ -2,14 +2,12 @@
 ## Get Started
 
 ```sh
+docker run -d --name=rtmp1 --rm -it -p 1935:1935 registry.gitlab.com/inwinstack/team3/lab2/rtmp-nginx-streamer
 
-docker run -d --name=rtmp1 --rm -it -p 1935:1935 server
 docker exec -it rtmp1 /bin/bash
 
 yt-dlp --list-formats https://youtu.be/S_bxc_AFUZU
 ffmpeg -re -i $(yt-dlp -f 300 -g https://youtu.be/S_bxc_AFUZU) -f flv -c:v copy -c:a copy rtmp://0.0.0.0/live/yt
-
-ffmpeg -re -i $(yt-dlp -f 300 -g https://youtu.be/S_bxc_AFUZU) -f flv -c:v copy rtmp://0.0.0.0/live/yt
 ```
 
 ## References
